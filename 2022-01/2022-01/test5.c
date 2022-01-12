@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include<stdio.h>
+#include<math.h>
 
 //打印100-200间的素数
 int main()
@@ -7,16 +8,16 @@ int main()
 	int i = 0;
 	int j = 0;
 	//试除法
-	for (i = 100; i <= 200; i++)
+	for (i = 101; i <= 200; i+=2)
 	{
-		for (j = 2; j < i; j++)
+		for (j = 2; j <= sqrt(i); j++)
 		{
 			if (i%j == 0)
 			{
 				break;
 			}
 		}
-		if (j == i)
+		if (j > sqrt(i))
 		{
 			printf("%d ", i);
 		}
