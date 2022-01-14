@@ -2,60 +2,125 @@
 #include<stdio.h>
 #include<math.h>
 #include<stdlib.h>
+#include<time.h>
 
 //猜数字游戏
+void menu()
+{
+	printf("******************************\n");
+	printf("*******1.play   0.exit********\n");
+	printf("******************************\n");
+}
+
+void game()
+{
+	int ret = rand() % 100 + 1;//得到0-100间的随机数
+	//时间戳--当前计算机时间-计算机起始时间(1970.1.1.0.0)的差
+//	printf("%d", ret);
+	int guess = 0;
+	
+	while (1)
+	{
+		printf("请输入您猜的数字：");
+		scanf("%d", &guess);
+
+		if (guess > ret)
+		{
+			printf("猜大了！\n");
+		}
+		else if (guess < ret)
+		{
+			printf("猜小了！\n");
+		}
+		else
+		{
+			printf("恭喜你，猜对了！\n");
+			break;
+		}
+	}
+}
+
 int main()
 {
-	printf("**********************\n");
-	printf("******1.开始游戏*******\n");
-	printf("******0.退出游戏*******\n");
-	printf("**********************\n");
-
+	int input = 0;
+	srand((unsigned int)time(NULL));//获得一个随机数种子
 	do
-	{
-		int input = 0;
-		printf("请输入：1.开始游戏，0.退出游戏\n");
+	{  
+		menu();
+		printf("请输入>:");
 		scanf("%d", &input);
 
-		switch (input)
+		if (input == 1)
 		{
-		case 1:
-		{
-			while (1)
-			{
-				int ret = rand() % 40;
-				int a = 0;
-				printf("欢迎来到游戏，请输入您猜的数字：\n");
-				scanf("%d", &a);
-
-				if (a > ret)
-				{
-					printf("输入数字偏大。\n");
-				}
-				else if (a < ret)
-				{
-					printf("输入数字偏小。\n");
-				}
-				else
-				{
-					printf("恭喜你，猜中了！\n");
-					break;
-				}
-			}
-
-			break;
+			game();
 		}
-		case 0:
+		else if (input == 0)
+		{
+			printf("退出游戏。\n");
 			exit(-1);
-			break;
-		default:
-			break;
 		}
-	} while ();
+		else
+		{
+			printf("输入错误。\n");
+		}
 
+	} while (input);
 
 	return 0;
 }
+
+//int main()
+//{
+//	printf("**********************\n");
+//	printf("******1.开始游戏*******\n");
+//	printf("******0.退出游戏*******\n");
+//	printf("**********************\n");
+//
+//	do
+//	{
+//		int input = 0;
+//		printf("请输入：1.开始游戏，0.退出游戏\n");
+//		scanf("%d", &input);
+//
+//		switch (input)
+//		{
+//		case 1:
+//		{
+//			while (1)
+//			{
+//				int ret = rand() % 40;
+//				int a = 0;
+//				printf("欢迎来到游戏，请输入您猜的数字：\n");
+//				scanf("%d", &a);
+//
+//				if (a > ret)
+//				{
+//					printf("输入数字偏大。\n");
+//				}
+//				else if (a < ret)
+//				{
+//					printf("输入数字偏小。\n");
+//				}
+//				else
+//				{
+//					printf("恭喜你，猜中了！\n");
+//					break;
+//				}
+//			}
+//
+//			break;
+//		}
+//		case 0:
+//			exit(-1);
+//			break;
+//		default:
+//			break;
+//		}
+//	} while ();
+//
+//
+//	return 0;
+//}
 
 ////二分查找法
 //int main()
