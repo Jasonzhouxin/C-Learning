@@ -2,17 +2,36 @@
 #include<stdio.h>
 #include<string.h>
 
-//memset--内存设置函数
+//交换两个数的函数
+void Swap(int* x, int* y)
+{
+	int temp = *x;
+	*x = *y;
+	*y = temp;
+}
 
 int main()
 {
-	char arr[] = "hello world!";
-	memset(arr, '*', 3);
-	printf("%s\n", arr);
-
+	int a = 10;
+	int b = 20;
+	
+	Swap(&a, &b);
+	printf("%d %d", a, b);
 
 	return 0;
 }
+
+//memset--内存设置函数
+
+//int main()
+//{
+//	char arr[] = "hello world!";
+//	memset(arr, '*', 3);
+//	printf("%s\n", arr);
+//
+//
+//	return 0;
+//}
 
 //strcpy--字符串拷贝函数
 
