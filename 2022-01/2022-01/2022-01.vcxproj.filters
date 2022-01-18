@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="func_test.c">
+    <ClCompile Include="recursion.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

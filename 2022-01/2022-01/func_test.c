@@ -2,26 +2,35 @@
 #include<stdio.h>
 #include<math.h>
 
-//写一个函数，没调用一次这个函数，就会将num的值增加1
-void func(int* num)
-{
-	(*num)++;
-}
-
+//printf()函数返回值
 
 int main()
 {
-	int num = 0;
-	func(&num);
-	func(&num);
-	func(&num);
-
-
-	printf("%d", num);
+	printf("%d", printf("%d", printf("%d", 43)));//打印4321.因为printf()函数返回值是字符串个数
 
 	return 0;
 }
 
+////写一个函数，没调用一次这个函数，就会将num的值增加1
+//void func(int* num)
+//{
+//	(*num)++;
+//}
+//
+//
+//int main()
+//{
+//	int num = 0;
+//	func(&num);
+//	func(&num);
+//	func(&num);
+//
+//
+//	printf("%d", num);
+//
+//	return 0;
+//}
+//
 
 //写一个函数，实现整型有序数组的二分查找
 
