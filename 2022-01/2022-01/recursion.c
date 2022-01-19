@@ -1,13 +1,17 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include<stdio.h>
 
+//汉诺塔问题
+
+//青蛙跳台阶问题
+
 //求第n个斐波拉契数列--1,1,2,3,5,8......
 //循环方式
 int Fibonacci(int n)
 {
 	int f1 = 1;
 	int f2 = 1;
-	int f3 = 0;
+	int f3 = 1;
 	while(n > 2)
 	{
 		f3 = f1 + f2;
