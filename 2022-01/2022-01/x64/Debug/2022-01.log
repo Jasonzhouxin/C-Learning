@@ -1,2 +1,6 @@
-﻿  recursion.c
+﻿  array.c
+d:\git-jason\c-learning\2022-01\2022-01\array.c(18): warning C4047: “=”:“int *”与“int”的间接级别不同
+d:\git-jason\c-learning\2022-01\2022-01\array.c(16): warning C4047: “初始化”:“int”与“int *”的间接级别不同
+d:\git-jason\c-learning\2022-01\2022-01\array.c(30): warning C4047: “函数”:“int **”与“int [10]”的间接级别不同
+d:\git-jason\c-learning\2022-01\2022-01\array.c(30): warning C4024: “bubble_sort”: 形参和实参 1 的类型不同
   2022-01.vcxproj -> D:\git-Jason\C-Learning\2022-01\x64\Debug\2022-01.exe
