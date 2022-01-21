@@ -1,22 +1,31 @@
 #include<stdio.h>
 
 //冒泡排序
-void bubble_sort(int* arr[])
+void bubble_sort(int* arr, int sz)
 {
+	//确定冒泡排序趟数
 	int i = 0;
 	int j = 0;
-	int sz = sizeof(arr) / sizeof(arr[0]);
+	//int sz = sizeof(arr) / sizeof(arr[0]);
 
-	for (i = 0; i < sz; i++)
+	for (i = 0; i < sz - 1; i++)
 	{
-		for (j = 0; j < sz - 1; j++)
+		int flag = 1;//假设这趟排序的数据已经有序
+
+		//每一趟冒泡排序
+		for (j = 0; j < sz - 1 - i; j++)
 		{
-			if (arr[i] > arr[i - 1])
+			if (arr[j] > arr[j + 1])
 			{
-				int temp = arr[i];
-				arr[i] = arr[i - 1];
-				arr[i - 1] = temp;
+				int temp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+				flag = 0;//本趟排序数据不完全有序
 			}
+		}
+		if (1 == flag)
+		{
+			break;
 		}
 	}
 }
@@ -27,7 +36,7 @@ int main()
 	int i = 0;
 
 	int sz = sizeof(arr) / sizeof(arr[0]);
-	bubble_sort(arr);
+	bubble_sort(arr, sz);
 
 	for (i = 0; i < sz; i++)
 	{
