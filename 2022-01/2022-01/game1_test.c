@@ -17,12 +17,27 @@ void game()//开始游戏
 	char Board[ROW][COL] = {0};
 	//初始化棋盘
 	InitBoard(Board, ROW, COL);
+	//显示棋盘
 	DisplayBoard(Board, ROW, COL);
+
+	while (1)
+	{
+		//玩家走
+		PlayerMove(Board, ROW, COL);
+		DisplayBoard(Board, ROW, COL);
+
+		//电脑走
+		ComputerMove(Board, ROW, COL);
+		DisplayBoard(Board, ROW, COL);
+
+		//判断输赢
+	}
 }
 
 void test()//游戏测试程序
 {
 	int input = 0;
+	srand ((unsigned int) time(NULL));
 
 	do
 	{
