@@ -13,6 +13,7 @@ void menu()//游戏菜单打印
 void game()//开始游戏
 {
 	//游戏主要逻辑部分
+	int ret = 0;//接收Iswin()函数返回值
 	//创建棋盘
 	char Board[ROW][COL] = {0};
 	//初始化棋盘
@@ -26,11 +27,32 @@ void game()//开始游戏
 		PlayerMove(Board, ROW, COL);
 		DisplayBoard(Board, ROW, COL);
 
+		ret = IsWin(Board, ROW, COL);
+		if (ret != 'C')
+		{
+			break;
+		}
 		//电脑走
 		ComputerMove(Board, ROW, COL);
 		DisplayBoard(Board, ROW, COL);
 
-		//判断输赢
+		ret = IsWin(Board, ROW, COL);
+		if (ret != 'C')
+		{
+			break;
+		}
+	}
+	if (ret == '*')
+	{
+		printf("玩家赢。\n");
+	}
+	else if (ret == '#')
+	{
+		printf("电脑赢。\n");
+	}
+	else
+	{
+		printf("平局。\n");
 	}
 }
 
