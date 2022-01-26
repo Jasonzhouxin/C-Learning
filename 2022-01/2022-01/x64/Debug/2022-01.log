@@ -1,9 +1,2 @@
-﻿  game2.c
-d:\git-jason\c-learning\2022-01\2022-01\game2.c(47): warning C4013: “rand”未定义；假设外部返回 int
-  game2_test.c
-d:\git-jason\c-learning\2022-01\2022-01\game2_test.c(18): warning C4048: “char (*)[9]”和“char [11][11]”数组的下标不同
-d:\git-jason\c-learning\2022-01\2022-01\game2_test.c(21): warning C4048: “char (*)[9]”和“char [11][11]”数组的下标不同
-d:\git-jason\c-learning\2022-01\2022-01\game2_test.c(30): warning C4013: “srand”未定义；假设外部返回 int
-d:\git-jason\c-learning\2022-01\2022-01\game2_test.c(30): warning C4013: “time”未定义；假设外部返回 int
-  正在生成代码...
+﻿  operator.c
   2022-01.vcxproj -> D:\git-Jason\C-Learning\2022-01\x64\Debug\2022-01.exe

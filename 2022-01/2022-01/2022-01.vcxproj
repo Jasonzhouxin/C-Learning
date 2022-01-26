@@ -19,11 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="game2.c" />
-    <ClCompile Include="game2_test.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="game2.h" />
+    <ClCompile Include="operator.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
