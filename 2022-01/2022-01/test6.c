@@ -1,30 +1,115 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include<stdio.h>
 
-//打印乘法口诀表
-void print_table(int n)
+//递归实现n的k次方
+double Pow(int n, int k)
 {
-	int i = 0;
-	for (i = 1; i <= n; i++)
-	{
-		int j = 0;
-		for (j = 1; j <= i; j++)
-		{
-			printf("%d*%d=%-4d", i, j, i*j);
-		}
-		printf("\n");
-	}
+	//n^k = n*n^(k-1)
+	if (k < 0)
+		return (1.0 / (Pow(n, -k)));
+	else if (k == 0)
+		return 1;
+	else
+		return n * Pow(n, k - 1);
 }
-
 int main()
 {
 	int n = 0;
-	scanf("%d", &n);
-
-	print_table(n);
+	int k = 0;
+	scanf("%d %d", &n, &k);
+	
+	double ret = Pow(n,k);
+	printf("%lf", ret);
 
 	return 0;
 }
+
+//递归求一个数字每位数之和
+//int DigitSum(int n)
+//{
+//	if (n > 9)
+//	{
+//		return DigitSum(n / 10) + n % 10;
+//	}
+//	else
+//	{
+//		return n;
+//	}
+//}
+//
+//int main()
+//{
+//	unsigned int num = 0;
+//	scanf("%d", &num);
+//
+//	int ret = DigitSum(num);
+//	printf("%d", ret);
+//
+//	return 0;
+//}
+
+//字符串逆序
+//int my_strlen(char* str)
+//{
+//	int count = 0;
+//
+//	while (*str != '\0')
+//	{
+//		count++;
+//		str++;
+//	}
+//	return count;
+//}
+//
+//void reverse_string(char arr[])
+//{
+//	int len = my_strlen(arr);
+//	char tmp = arr[0];
+//	arr[0] = arr[len - 1];
+//	arr[len - 1] = '\0';
+//
+//	if (my_strlen(arr + 1) >= 2)
+//		reverse_string(arr + 1);
+//
+//	arr[len - 1] = tmp;
+//
+//}
+//
+//int main()
+//{
+//	char arr[] = "abcdefg";
+//
+//	reverse_string(arr);
+//	printf("%s\n", arr);
+//
+//
+//	return 0;
+//}
+
+////打印乘法口诀表
+//void print_table(int n)
+//{
+//	int i = 0;
+//	for (i = 1; i <= n; i++)
+//	{
+//		int j = 0;
+//		for (j = 1; j <= i; j++)
+//		{
+//			printf("%d*%d=%-4d", i, j, i*j);
+//		}
+//		printf("\n");
+//	}
+//}
+//
+//int main()
+//{
+//	int n = 0;
+//	scanf("%d", &n);
+//
+//	print_table(n);
+//
+//	return 0;
+//}
 
 ////打印二进制的奇数位和偶数位
 //void Print(int m)
