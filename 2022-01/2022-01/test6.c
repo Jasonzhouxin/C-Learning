@@ -1,28 +1,64 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include<stdio.h>
+#include<assert.h>
 
-//递归实现n的k次方
-double Pow(int n, int k)
+//字符串拷贝
+void my_strcpy(char* dest, const char* src)
 {
-	//n^k = n*n^(k-1)
-	if (k < 0)
-		return (1.0 / (Pow(n, -k)));
-	else if (k == 0)
-		return 1;
-	else
-		return n * Pow(n, k - 1);
+	assert(dest != NULL);//断言-保证指针有效性
+	assert(src != NULL);
+	//将src指向的字符串拷贝到dest指向的空间，包含'\0'
+	while (*dest++ = *src++)
+	{
+		;
+	}
 }
+
 int main()
 {
-	int n = 0;
-	int k = 0;
-	scanf("%d %d", &n, &k);
-	
-	double ret = Pow(n,k);
-	printf("%lf", ret);
+	char arr1[] = "#############";
+	char arr2[] = "hello";
+
+	my_strcpy(arr1, arr2);
+
+	printf("%s\n", arr1);
 
 	return 0;
 }
+
+//调试测试
+//int main()
+//{
+//	int i = 0;
+//	for (i = 0; i < 10; i++)
+//	{
+//		printf("%d ", i);
+//	}
+//	return 0;
+//}
+
+//递归实现n的k次方
+//double Pow(int n, int k)
+//{
+//	//n^k = n*n^(k-1)
+//	if (k < 0)
+//		return (1.0 / (Pow(n, -k)));
+//	else if (k == 0)
+//		return 1;
+//	else
+//		return n * Pow(n, k - 1);
+//}
+//int main()
+//{
+//	int n = 0;
+//	int k = 0;
+//	scanf("%d %d", &n, &k);
+//	
+//	double ret = Pow(n,k);
+//	printf("%lf", ret);
+//
+//	return 0;
+//}
 
 //递归求一个数字每位数之和
 //int DigitSum(int n)
