@@ -2,29 +2,78 @@
 #include<stdio.h>
 #include<assert.h>
 
-//字符串拷贝
-void my_strcpy(char* dest, const char* src)
+//数组指针用法
+void print(int (*p)[5], int x, int y)
 {
-	assert(dest != NULL);//断言-保证指针有效性
-	assert(src != NULL);
-	//将src指向的字符串拷贝到dest指向的空间，包含'\0'
-	while (*dest++ = *src++)
+	int i = 0;
+	int j = 0;
+
+	for (i = 0; i < x; i++)
 	{
-		;
+		for (j = 0; j < y; j++)
+		{
+			printf("%d ", *(*(p+i)+j));
+		}
+		printf("\n");
 	}
+
 }
 
 int main()
 {
-	char arr1[] = "#############";
-	char arr2[] = "hello";
+	int arr[3][5] = { {1,2,3,4,5},{2,3,4,5,6},{3,4,5,6,7} };
 
-	my_strcpy(arr1, arr2);
-
-	printf("%s\n", arr1);
+	print(arr, 3, 5);
 
 	return 0;
 }
+
+//检测系统是大端存储还是小端储存
+//int check_sys()
+//{
+//	int i = 0;
+//	return (*(char*)&i);
+//}
+//
+//int main()
+//{
+//	int ret = check_sys();
+//
+//	if (ret == 1)
+//	{
+//		printf("大端\n");
+//	}
+//	else
+//	{
+//		printf("小端\n");
+//	}
+//
+//	return 0;
+//}
+
+//字符串拷贝
+//void my_strcpy(char* dest, const char* src)
+//{
+//	assert(dest != NULL);//断言-保证指针有效性
+//	assert(src != NULL);
+//	将src指向的字符串拷贝到dest指向的空间，包含'\0'
+//	while (*dest++ = *src++)
+//	{
+//		;
+//	}
+//}
+//
+//int main()
+//{
+//	char arr1[] = "#############";
+//	char arr2[] = "hello";
+//
+//	my_strcpy(arr1, arr2);
+//
+//	printf("%s\n", arr1);
+//
+//	return 0;
+//}
 
 //调试测试
 //int main()
