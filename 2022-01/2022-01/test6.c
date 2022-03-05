@@ -2,31 +2,44 @@
 #include<stdio.h>
 #include<assert.h>
 
-//数组指针用法
-void print(int (*p)[5], int x, int y)
+void Print(char * str)
 {
-	int i = 0;
-	int j = 0;
-
-	for (i = 0; i < x; i++)
-	{
-		for (j = 0; j < y; j++)
-		{
-			printf("%d ", *(*(p+i)+j));
-		}
-		printf("\n");
-	}
-
+	printf("%s", str);
 }
 
 int main()
 {
-	int arr[3][5] = { {1,2,3,4,5},{2,3,4,5,6},{3,4,5,6,7} };
-
-	print(arr, 3, 5);
+	void (*p)(char *) = Print;
+	(*p)("hello world.");
 
 	return 0;
 }
+
+////数组指针用法
+//void print(int (*p)[5], int x, int y)
+//{
+//	int i = 0;
+//	int j = 0;
+//
+//	for (i = 0; i < x; i++)
+//	{
+//		for (j = 0; j < y; j++)
+//		{
+//			printf("%d ", *(*(p+i)+j));
+//		}
+//		printf("\n");
+//	}
+//
+//}
+//
+//int main()
+//{
+//	int arr[3][5] = { {1,2,3,4,5},{2,3,4,5,6},{3,4,5,6,7} };
+//
+//	print(arr, 3, 5);
+//
+//	return 0;
+//}
 
 //检测系统是大端存储还是小端储存
 //int check_sys()
