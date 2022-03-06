@@ -2,18 +2,81 @@
 #include<stdio.h>
 #include<assert.h>
 
-void Print(char * str)
+//函数指针数组--计算器
+int add(int x, int y)
 {
-	printf("%s", str);
+	return x + y;
+}
+
+int sub(int x, int y)
+{
+	return x - y;
+}
+
+int mul(int x, int y)
+{
+	return x * y;
+}
+
+int div(int x, int y)
+{
+	return x / y;
+}
+
+void menu()
+{
+	printf("**********************\n");
+	printf("****1.add    2.sub****\n"); 
+	printf("****3.mul    4.div****\n");
+	printf("****** 0.exit ********\n");
+	printf("**********************\n");
 }
 
 int main()
 {
-	void (*p)(char *) = Print;
-	(*p)("hello world.");
+	int input = 0;
+	do
+	{
+		int a = 0;
+		int b = 0;
+		menu();
+		printf("请选择:");
+		scanf("%d", &input);
+
+		if (input>=1 && input<=4)
+		{
+			printf("请输入两个数：");
+			scanf("%d %d", &a, &b);
+			int(*pArr[])(int x, int y) = { 0, add, sub, mul, div };
+			int ret = pArr[input](a, b);
+			printf("%d\n", ret);
+		}
+		else if (input == 0)
+		{
+			exit(-1);
+		}
+		else
+		{
+			printf("输入有误。\n");
+		}	
+	} while (input);
 
 	return 0;
 }
+
+//函数指针
+//void Print(char * str)
+//{
+//	printf("%s", str);
+//}
+//
+//int main()
+//{
+//	void (*p)(char *) = Print;
+//	(*p)("hello world.");
+//
+//	return 0;
+//}
 
 ////数组指针用法
 //void print(int (*p)[5], int x, int y)
