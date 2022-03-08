@@ -1,68 +1,128 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include<stdio.h>
+#include<stdlib.h>
 #include<assert.h>
+#include<string.h>
 
-//函数指针数组--计算器
-int add(int x, int y)
+//qsort使用
+int cmp_float(const void* e1, const void* e2)
 {
-	return x + y;
+	return ((int)(*(float*)e1 - *(float*)e2));
 }
 
-int sub(int x, int y)
+void test1()
 {
-	return x - y;
+	float f[] = { 9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0 };
+	int sz = sizeof(f) / sizeof(f[0]);
+	qsort(f, sz, sizeof(f[0]), cmp_float);
+
+	int i = 0;
+	for (i = 0; i < sz; i++)
+	{
+		printf("%f\n", f[i]);
+	}
 }
 
-int mul(int x, int y)
+struct Std
 {
-	return x * y;
+	char name;
+	int age;
+};
+
+int cmp_std_by_age(const void* e1, const void* e2)
+{
+	return ((struct Std*)e1)->age - ((struct Std*)e2)->age;
 }
 
-int div(int x, int y)
+void test2()
 {
-	return x / y;
+	struct Std s[3] = { {"zhangsan", 20} ,{"lisi", 10},{"wangwu", 30} };
+	int sz = sizeof(s) / sizeof(s[0]);
+	qsort(s, sz, sizeof(s[0]), cmp_std_by_age);
 }
 
-void menu()
+int cmp_std_by_name(const void* e1, const void* e2)
 {
-	printf("**********************\n");
-	printf("****1.add    2.sub****\n"); 
-	printf("****3.mul    4.div****\n");
-	printf("****** 0.exit ********\n");
-	printf("**********************\n");
+	return strcmp(((struct Std*)e1)->name, ((struct Std*)e2)->name);
+}
+
+void test3()
+{
+	struct Std s[] = { {"zhangsan", 20} ,{"lisi", 10},{"wangwu", 30} };
+	int sz = sizeof(s) / sizeof(s[0]);
+	qsort(s, sz, sizeof(s[0]), cmp_std_by_name);
 }
 
 int main()
 {
-	int input = 0;
-	do
-	{
-		int a = 0;
-		int b = 0;
-		menu();
-		printf("请选择:");
-		scanf("%d", &input);
-
-		if (input>=1 && input<=4)
-		{
-			printf("请输入两个数：");
-			scanf("%d %d", &a, &b);
-			int(*pArr[])(int x, int y) = { 0, add, sub, mul, div };
-			int ret = pArr[input](a, b);
-			printf("%d\n", ret);
-		}
-		else if (input == 0)
-		{
-			exit(-1);
-		}
-		else
-		{
-			printf("输入有误。\n");
-		}	
-	} while (input);
+	//test1();
+	//test2();
+	test3();
 
 	return 0;
 }
+
+////函数指针数组--计算器
+//int add(int x, int y)
+//{
+//	return x + y;
+//}
+//
+//int sub(int x, int y)
+//{
+//	return x - y;
+//}
+//
+//int mul(int x, int y)
+//{
+//	return x * y;
+//}
+//
+//int div(int x, int y)
+//{
+//	return x / y;
+//}
+//
+//void menu()
+//{
+//	printf("**********************\n");
+//	printf("****1.add    2.sub****\n"); 
+//	printf("****3.mul    4.div****\n");
+//	printf("****** 0.exit ********\n");
+//	printf("**********************\n");
+//}
+//
+//int main()
+//{
+//	int input = 0;
+//	do
+//	{
+//		int a = 0;
+//		int b = 0;
+//		menu();
+//		printf("请选择:");
+//		scanf("%d", &input);
+//
+//		if (input>=1 && input<=4)
+//		{
+//			printf("请输入两个数：");
+//			scanf("%d %d", &a, &b);
+//			int(*pArr[])(int x, int y) = { 0, add, sub, mul, div };
+//			int ret = pArr[input](a, b);
+//			printf("%d\n", ret);
+//		}
+//		else if (input == 0)
+//		{
+//			exit(-1);
+//		}
+//		else
+//		{
+//			printf("输入有误。\n");
+//		}	
+//	} while (input);
+//
+//	return 0;
+//}
 
 //函数指针
 //void Print(char * str)
