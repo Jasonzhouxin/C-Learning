@@ -25,7 +25,7 @@ void test1()
 
 struct Std
 {
-	char name;
+	char name[20];
 	int age;
 };
 
