@@ -4,22 +4,32 @@
 #include<assert.h>
 #include<string.h>
 
-//qsort使用
-int cmp_float(const void* e1, const void* e2)
+//bubble_sort回调函数
+
+void swap(char* buf1, char* buf2, int width)
 {
-	return ((int)(*(float*)e1 - *(float*)e2));
+	int i = 0;
+	for (i = 0; i < width; i++)
+	{
+		char tmp = *buf1;
+		*buf1 = *buf2;
+		*buf2 = tmp;
+	}
 }
 
-void test1()
+void bubble_sort(void* base, int sz, int width, int (*cmp)(void* e1, void* e2))
 {
-	float f[] = { 9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0 };
-	int sz = sizeof(f) / sizeof(f[0]);
-	qsort(f, sz, sizeof(f[0]), cmp_float);
-
 	int i = 0;
-	for (i = 0; i < sz; i++)
+	for (i = 0; i < sz - 1; i++)
 	{
-		printf("%f\n", f[i]);
+		int j = 0;
+		for (j = 0; j < sz - 1 - i; j++)
+		{
+			if ((cmp((char*)base+j*width, (char*)base + (j + 1)*width) > 0))
+			{
+				swap((char*)base + j * width, (char*)base + (j + 1)*width, width);
+			}
+		}
 	}
 }
 
@@ -29,38 +39,76 @@ struct Std
 	int age;
 };
 
-int cmp_std_by_age(const void* e1, const void* e2)
-{
-	return ((struct Std*)e1)->age - ((struct Std*)e2)->age;
-}
-
-void test2()
+void test()
 {
 	struct Std s[3] = { {"zhangsan", 20} ,{"lisi", 10},{"wangwu", 30} };
 	int sz = sizeof(s) / sizeof(s[0]);
-	qsort(s, sz, sizeof(s[0]), cmp_std_by_age);
-}
-
-int cmp_std_by_name(const void* e1, const void* e2)
-{
-	return strcmp(((struct Std*)e1)->name, ((struct Std*)e2)->name);
-}
-
-void test3()
-{
-	struct Std s[] = { {"zhangsan", 20} ,{"lisi", 10},{"wangwu", 30} };
-	int sz = sizeof(s) / sizeof(s[0]);
-	qsort(s, sz, sizeof(s[0]), cmp_std_by_name);
+	bubble_sort(s, sz, sizeof(s[0]), );
 }
 
 int main()
 {
-	//test1();
-	//test2();
-	test3();
 
 	return 0;
 }
+
+////qsort使用
+//int cmp_float(const void* e1, const void* e2)
+//{
+//	return ((int)(*(float*)e1 - *(float*)e2));
+//}
+//
+//void test1()
+//{
+//	float f[] = { 9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0 };
+//	int sz = sizeof(f) / sizeof(f[0]);
+//	qsort(f, sz, sizeof(f[0]), cmp_float);
+//
+//	int i = 0;
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("%f\n", f[i]);
+//	}
+//}
+//
+//struct Std
+//{
+//	char name[20];
+//	int age;
+//};
+//
+//int cmp_std_by_age(const void* e1, const void* e2)
+//{
+//	return ((struct Std*)e1)->age - ((struct Std*)e2)->age;
+//}
+//
+//void test2()
+//{
+//	struct Std s[3] = { {"zhangsan", 20} ,{"lisi", 10},{"wangwu", 30} };
+//	int sz = sizeof(s) / sizeof(s[0]);
+//	qsort(s, sz, sizeof(s[0]), cmp_std_by_age);
+//}
+//
+//int cmp_std_by_name(const void* e1, const void* e2)
+//{
+//	return strcmp(((struct Std*)e1)->name, ((struct Std*)e2)->name);
+//}
+//
+//void test3()
+//{
+//	struct Std s[] = { {"zhangsan", 20} ,{"lisi", 10},{"wangwu", 30} };
+//	int sz = sizeof(s) / sizeof(s[0]);
+//	qsort(s, sz, sizeof(s[0]), cmp_std_by_name);
+//}
+//
+//int main()
+//{
+//	//test1();
+//	//test2();
+//	test3();
+//
+//	return 0;
+//}
 
 ////函数指针数组--计算器
 //int add(int x, int y)
