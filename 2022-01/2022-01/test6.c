@@ -5,6 +5,16 @@
 #include<string.h>
 
 //bubble_sort»Øµ÷º¯Êý
+struct Std
+{
+	char name[20];
+	int age;
+};
+
+int cmp(const void* e1, const void* e2)
+{
+	return ((struct Std*)e1)->age - ((struct Std*)e2)->age;
+}
 
 void swap(char* buf1, char* buf2, int width)
 {
@@ -14,6 +24,8 @@ void swap(char* buf1, char* buf2, int width)
 		char tmp = *buf1;
 		*buf1 = *buf2;
 		*buf2 = tmp;
+		buf1++;
+		buf2++;
 	}
 }
 
@@ -33,21 +45,16 @@ void bubble_sort(void* base, int sz, int width, int (*cmp)(void* e1, void* e2))
 	}
 }
 
-struct Std
-{
-	char name[20];
-	int age;
-};
-
 void test()
 {
 	struct Std s[3] = { {"zhangsan", 20} ,{"lisi", 10},{"wangwu", 30} };
 	int sz = sizeof(s) / sizeof(s[0]);
-	bubble_sort(s, sz, sizeof(s[0]), );
+	bubble_sort(s, sz, sizeof(s[0]), cmp);
 }
 
 int main()
 {
+	test();
 
 	return 0;
 }
